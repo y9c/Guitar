@@ -124,13 +124,7 @@
                                 CI_interval = c(0.025,0.975))
 { densityDataframe <- data.frame()
 for (GroupName in names(sitesPointsRelative)) {
-  sitesWeight <- sitesPointWeight[[GroupName]] / sum(sitesPointWeight[[GroupName]])
-  print(sitesPointWeight[[GroupName]])
-  print("..........")
-  print(sitesPointWeight[[GroupName]])
-  print("..........")
-  print(sum(sitesPointWeight[[GroupName]]) )
-  print("..........")
+  sitesWeight <- sitesPointWeight[[GroupName]] / sum(sitesPointWeight[[GroupName]], na.rm=TRUE)
   siteID <- sitesPointsRelative[[GroupName]]
   # fit1 <- suppressWarnings(density(siteID, adjust = adjust,n=256,from=0,to=1, weight=sitesWeight))
   # fit1 <- suppressWarnings(density(siteID, adjust = adjust,from = 0, to = 1,n = 256, weight=sitesWeight))
