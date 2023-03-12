@@ -128,7 +128,8 @@ for (GroupName in names(sitesPointsRelative)) {
   siteID <- sitesPointsRelative[[GroupName]]
   # fit1 <- suppressWarnings(density(siteID, adjust = adjust,n=256,from=0,to=1, weight=sitesWeight))
   # fit1 <- suppressWarnings(density(siteID, adjust = adjust,from = 0, to = 1,n = 256, weight=sitesWeight))
-  fit1 <- suppressWarnings(density(siteID[!is.na(siteID)&!is.infinite(sitesWeight)], adjust = adjust,from = 0, to = 1,n = 256, weight=sitesWeight[!is.na(siteID)&!is.infinite(sitesWeight)]))
+  filter_passed <- !is.na(siteID) & !is.infinite(siteID) & !is.na(sitesWeight) & !is.infinite(sitesWeight)
+  fit1 <- suppressWarnings(density(siteID[filter_passed], adjust = adjust,from = 0, to = 1,n = 256, weight=sitesWeight[filter_passed]))
 
   
   tmp <-  data.frame(
